@@ -23,7 +23,7 @@ ANALYSED_OXIDE_WT_PCT = {
 PRESSURE_BAR = 1.0
 MELTS_MODEL = "MELTSv1.0.2"
 FE3_FET_LIQ = 0.80
-OUTPUT_FILE = Path("melts_liquidus_result.csv")
+OUTPUT_FILE = Path("old/melts_liquidus_result.csv")
 
 MOLAR_MASS_FEO = 71.844
 MOLAR_MASS_FE2O3 = 159.688
