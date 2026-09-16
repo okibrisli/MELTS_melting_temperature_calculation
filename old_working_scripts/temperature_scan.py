@@ -34,9 +34,9 @@ FIRST_LIQUID_THRESHOLD = 1.0e-4
 MILESTONES = (0.10, 0.50, 0.90, 0.99)
 PRINT_FULL_SCAN_TO_TERMINAL = False
 
-SCAN_FILE = Path("old/melts_temperature_scan.csv")
-FINDINGS_FILE = Path("old/melts_melting_findings.csv")
-LIQUIDUS_FILE = Path("old/melts_liquidus_result.csv")
+SCAN_FILE = Path("../old/melts_temperature_scan.csv")
+FINDINGS_FILE = Path("melts_melting_findings.csv")
+LIQUIDUS_FILE = Path("../old/melts_liquidus_result.csv")
 
 FEO_MOLAR_MASS = 71.844
 FE2O3_MOLAR_MASS = 159.688
