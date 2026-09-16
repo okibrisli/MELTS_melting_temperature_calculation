@@ -12,6 +12,9 @@ import pandas as pd
 import petthermotools as ptt
 
 
+# CSV input file for compositions
+INPUT_CSV_FILE = Path("compositions.csv")
+
 COMPOSITION_RANGES = {
     "SiO2": (70.0, 77.0, 1.0),
     "TiO2": (0.0, 0.0, 0.0),
@@ -26,6 +29,23 @@ COMPOSITION_RANGES = {
     "P2O5": (0.0, 0.0, 0.0),
     "H2O": (0.0, 0.0, 0.0),
     "CO2": (0.0, 0.0, 0.0),
+}
+
+# Oxides that MELTS bulk can actually handle in this script
+MELTS_OXIDES = {
+    "SiO2",
+    "TiO2",
+    "Al2O3",
+    "Fe2O3",
+    "FeO",
+    "MnO",
+    "MgO",
+    "CaO",
+    "Na2O",
+    "K2O",
+    "P2O5",
+    "H2O",
+    "CO2",
 }
 
 MELTS_MODEL = "MELTSv1.0.2"
@@ -347,8 +367,34 @@ def failed_summary(composition_id, composition, error):
     }
 
 
+def load_compositions_from_csv(path):
+    if not path.exists():
+        raise FileNotFoundError(f"Input CSV file not found: {path}")
+
+    df = pd.read_csv(path)
+    if df.empty:
+        raise ValueError("Input CSV file contains no rows.")
+
+    compositions = []
+    unsupported_oxides = set()
+
+    for _, row in df.iterrows():
+        composition = {}
+        for column in df.columns:
+            value = numeric_value(row[column])
+            if value != 0.0:
+                oxide_name = str(column).strip()
+                composition[oxide_name] = float(value)
+        # Track oxides that MELTS will not use in the bulk
+        unsupported_oxides.update(set(composition.keys()) - MELTS_OXIDES)
+        compositions.append(composition)
+
+    return compositions, unsupported_oxides
+
+
 def main():
-    compositions = list(make_composition_grid(COMPOSITION_RANGES))
+    # Load compositions from CSV instead of generating a grid
+    compositions, unsupported_oxides = load_compositions_from_csv(INPUT_CSV_FILE)
     temperatures = temperature_values()
 
     if len(compositions) > MAX_CALCULATIONS:
@@ -360,10 +406,14 @@ def main():
     print(f"MELTS model: {MELTS_MODEL}")
     print(f"Pressure: {PRESSURE_BAR:.5f} bar")
     print(f"Fe3+ to total Fe: {FE3_FET_LIQ:.5f}")
-    print(f"Composition points: {len(compositions)}")
+    print(f"Composition points (from CSV): {len(compositions)}")
     print(f"Temperature range: {T_MIN_C:.2f} to {T_MAX_C:.2f} degC")
     print(f"Temperature step: {TEMPERATURE_STEP_C:.2f} degC")
     print(f"Temperature points per composition: {len(temperatures)}")
+
+    if unsupported_oxides:
+        print("\nUnsupported oxides for MELTS bulk will be ignored in calculations:")
+        print(" " + " ".join(sorted(unsupported_oxides)))
 
     summaries = []
     scan_records = []
