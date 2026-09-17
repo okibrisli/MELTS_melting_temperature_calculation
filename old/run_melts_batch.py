@@ -3,7 +3,7 @@ import multiprocessing
 
 import pandas as pd
 
-import melts_liquidus_single as calculator
+import melts_liquidus_single_final as calculator
 from composition_generator import linear_composition_path
 
 

@@ -49,7 +49,7 @@ import petthermotools as ptt
 # run, next to the numeric value actually used, so you always have a record
 # of exactly what produced a given summary/scan file.
 
-INPUT_CSV_PATH = Path("compositions_2.csv")
+INPUT_CSV_PATH = Path("compositions_grid_sweep.csv")
 # Path to your composition table. One row per composition point. Columns are
 # oxide wt% (see SUPPORTED_OXIDES). Any other column is carried through to
 # the outputs for bookkeeping but is NOT sent to MELTS and NOT included in
@@ -107,7 +107,7 @@ FE3_FET_LIQ = 0.80
 # accessory phases (spinel, rhm-oxide) show up in the phase list.
 
 T_MIN_C = 800.0
-T_MAX_C = 1800.0
+T_MAX_C = 1500.0
 TEMPERATURE_STEP_C = 100.0
 # The 1-atm temperature ladder MELTS is asked to equilibrate at, one
 # Gibbs-energy minimisation per step, from T_MIN_C up to T_MAX_C. See

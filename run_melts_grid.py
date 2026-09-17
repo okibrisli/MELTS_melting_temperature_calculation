@@ -1,7 +1,7 @@
 from pathlib import Path
 import multiprocessing
 
-import melts_liquidus_single as calculator
+import melts_liquidus_single_final as calculator
 from composition_grid_generator import composition_grid_size, make_composition_grid
 from old.run_melts_batch import (
     print_batch_summary,

@@ -5,17 +5,17 @@ import petthermotools as ptt
 
 
 ANALYSED_OXIDE_WT_PCT = {
-    "SiO2": 77.0,
+    "SiO2": 80.94,
     "TiO2": 0.0,
-    "Al2O3": 5.0,
-    "Fe2O3": 1.0,
+    "Al2O3": 10.64,
+    "Fe2O3": 2.29,
     "FeO": 0.0,
-    "MnO": 0.0,
-    "MgO": 2.0,
-    "CaO": 15.0,
-    "Na2O": 0.0,
-    "K2O": 0.0,
-    "P2O5": 0.0,
+    "MnO": 0.03,
+    "MgO": 0.19,
+    "CaO": 1.66,
+    "Na2O": 1.76,
+    "K2O": 1.41,
+    "P2O5": 1.08,
     "H2O": 0.0,
     "CO2": 0.0,
 }

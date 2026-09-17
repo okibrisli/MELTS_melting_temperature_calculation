@@ -22,7 +22,7 @@ Usage (PyCharm or terminal):
     python batch_melts_melting_range.py compositions.csv
 
 Requires: petthermotools, pandas, numpy, alphaMELTS for Python already on path
-(exactly the setup you already have working for melts_liquidus_single.py).
+(exactly the setup you already have working for melts_liquidus_single_final.py).
 """
 
 from pathlib import Path
