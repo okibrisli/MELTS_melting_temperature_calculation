@@ -49,7 +49,7 @@ import petthermotools as ptt
 # run, next to the numeric value actually used, so you always have a record
 # of exactly what produced a given summary/scan file.
 
-INPUT_CSV_PATH = Path("compositions.csv")
+INPUT_CSV_PATH = Path("compositions_2.csv")
 # Path to your composition table. One row per composition point. Columns are
 # oxide wt% (see SUPPORTED_OXIDES). Any other column is carried through to
 # the outputs for bookkeeping but is NOT sent to MELTS and NOT included in
@@ -107,8 +107,8 @@ FE3_FET_LIQ = 0.80
 # accessory phases (spinel, rhm-oxide) show up in the phase list.
 
 T_MIN_C = 800.0
-T_MAX_C = 1500.0
-TEMPERATURE_STEP_C = 20.0
+T_MAX_C = 1800.0
+TEMPERATURE_STEP_C = 100.0
 # The 1-atm temperature ladder MELTS is asked to equilibrate at, one
 # Gibbs-energy minimisation per step, from T_MIN_C up to T_MAX_C. See
 # "TEMPERATURE RANGE VALIDITY" below for where this range is/is not
@@ -119,7 +119,7 @@ TEMPERATURE_STEP_C = 20.0
 # 25 degC steps are more defensible than 50 degC; halve the step if the
 # milestone table below looks like it is jumping in big increments.
 
-PHASE_DIAGRAM_CORES = 2
+PHASE_DIAGRAM_CORES = 1
 # Number of parallel alphaMELTS worker processes petthermotools spawns for
 # the temperature scan of ONE composition. Increase towards your CPU core
 # count to speed up a single composition's temperature ladder; it does not

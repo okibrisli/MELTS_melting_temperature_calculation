@@ -13,17 +13,17 @@ import petthermotools as ptt
 
 
 COMPOSITION_RANGES = {
-    "SiO2": (70.0, 77.0, 1.0),
+    "SiO2": (50.0, 100.0, 10.0),
     "TiO2": (0.0, 0.0, 0.0),
-    "Al2O3": (5.0, 5.0, 0.0),
-    "Fe2O3": (1.0, 1.0, 0.0),
+    "Al2O3": (50.0, 100.0, 10.0),
+    "Fe2O3": (1.0, 4.0, 1.0),
     "FeO": (0.0, 0.0, 0.0),
-    "MnO": (0.0, 0.0, 0.0),
-    "MgO": (2.0, 2.0, 0.0),
-    "CaO": (15.0, 15.0, 0.0),
-    "Na2O": (0.0, 0.0, 0.0),
-    "K2O": (0.0, 0.0, 0.0),
-    "P2O5": (0.0, 0.0, 0.0),
+    "MnO": (2.0, 4.0, 2.0),
+    "MgO": (2.0, 4.0, 2.0),
+    "CaO": (0.0, 10.0, 2.0),
+    "Na2O": (2.0, 4.0, 2.0),
+    "K2O": (2.0, 4.0, 2.0),
+    "P2O5": (2.0, 4.0, 2.0),
     "H2O": (0.0, 0.0, 0.0),
     "CO2": (0.0, 0.0, 0.0),
 }
@@ -32,8 +32,8 @@ MELTS_MODEL = "MELTSv1.0.2"
 PRESSURE_BAR = 1.0
 FE3_FET_LIQ = 0.80
 
-T_MIN_C = 1000.0
-T_MAX_C = 1400.0
+T_MIN_C = 800.0
+T_MAX_C = 2000.0
 TEMPERATURE_STEP_C = 100.0
 PHASE_DIAGRAM_CORES = 1
 
@@ -43,7 +43,7 @@ PRACTICAL_LIQUIDUS_FRACTION = 0.99
 FULL_LIQUID_TOLERANCE = 1.0e-6
 LIQUID_FRACTION_MILESTONES = (0.01, 0.10, 0.25, 0.50, 0.75, 0.90, 0.95, 0.99)
 REPORTING_PHASE_FRACTION_MIN = 1.0e-4
-MAX_CALCULATIONS = 500
+MAX_CALCULATIONS = 30000
 
 OUTPUT_DIRECTORY = Path("melts_pd_grid_results")
 TBL_OUTPUT_DIRECTORY = Path("old")
